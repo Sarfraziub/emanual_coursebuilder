@@ -1,0 +1,16 @@
+
+<div class="headings">
+    <h1 nz-typography>Select the “Category” of Event you are building </h1>
+    <p nz-typography>*mandatory </p>    
+</div>
+<div class="categories-wrapper" nz-row [nzGutter]="[24, 24]">
+    
+    <div nz-col class="gutter-row column" [nzXs]="24/1" [nzSm]="24/1" [nzMd]="24/2" [nzLg]="24/3"
+        *ngFor="let category of categories">
+        <button nz-button nzType="primary"  class="card-button" disabled="{{category.disabled}}" nzSearch
+            (click)="categoryOnClick(category.id)">
+            "{{category.name}}" Event
+            
+        </button>
+    </div>
+</div>

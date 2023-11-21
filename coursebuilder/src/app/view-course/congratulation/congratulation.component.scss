@@ -1,0 +1,20 @@
+/* your-component.css or a global CSS file */
+
+.course-page-content {
+  overflow: hidden; /* Add this to hide any overflow content */
+}
+
+.card-custom {
+  border: 1px solid black;
+  min-height: 80vh;
+  max-height: 80vh;
+  margin: 30px;
+  overflow: hidden; /* Add this to hide any overflow content */
+}
+
+.congratulations-text {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+}

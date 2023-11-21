@@ -1,0 +1,23 @@
+.courses-listing-page {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 5%;
+}
+
+.table-container {
+  flex: 1;
+  overflow: auto;
+}
+
+.steps-footer {
+  margin: 20px;
+  align-self: flex-end;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  /* Align button to the right */
+}
+
+.courseButton {
+  margin: 5px;
+}

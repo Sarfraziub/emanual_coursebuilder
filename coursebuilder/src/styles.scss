@@ -1,0 +1,136 @@
+@import '~quill/dist/quill.snow.css';
+
+
+
+/* You can add global styles to this file, and also import other style files */
+
+* {
+  box-sizing: border-box;
+}
+
+mark {
+  background-color: transparent !important;
+}
+
+html {
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+// utils.
+
+.m-0 {
+  margin: 0 !important;
+}
+
+.mt-0 {
+  margin-top: 0 !important;
+}
+
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.color-red {
+  color: red;
+}
+
+.color-subtle {
+  color: #00000070 !important;
+}
+
+.ant-btn-primary {
+  color: black;
+}
+
+.ant-btn:hover,
+.ant-btn:focus {
+  background-color: #EEEEEE;
+  border-color: #EEEEEE;
+  color: #6e6e6e;
+}
+
+.ant-btn-primary:hover,
+.ant-btn-primary:focus {
+  color: #fff;
+  background: black;
+}
+
+
+
+.headings {
+  width: 100%;
+  margin: 0px auto;
+
+  h1,
+  p,
+  span {
+    margin: 0;
+  }
+
+  span {
+    font-size: 15px;
+    font-weight: normal;
+  }
+
+  .font-size-20 {
+    font-size: 20px;
+  }
+
+  .italic {
+    font-style: italic;
+  }
+}
+
+.card-button {
+  width: 100%;
+  max-width: 400px;
+  min-height: 250px;
+  font-size: 20px;
+  font-weight: bold;
+  border: 1px solid black;
+  margin: 10px auto;
+  white-space: normal;
+}
+
+.categories-wrapper {
+  width: 100%;
+  margin: auto 0px !important;
+}
+
+a.ant-btn-lg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.saveExitBtn {
+  margin-left: auto
+}
+
+
+.ant-modal {
+  margin: 0px;
+
+  width: 75% !important;
+  top: 50% !important;
+  left: 50%!important;
+  transform: translate(-50%, -50%) !important;
+}
+@media (max-width: 767px){
+  .ant-modal {
+    margin-top: 228px !important;
+  }
+}

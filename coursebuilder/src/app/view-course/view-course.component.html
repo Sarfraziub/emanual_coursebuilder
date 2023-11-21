@@ -1,0 +1,203 @@
+<div class="course-page-wrapper">
+  <div class="course-page-header" *ngIf="validateCongrat()">
+    <div class="course-page-header-headings">
+      <h3 nz-typography class="m-0">{{ course.title }}</h3>
+      <h5 nz-typography class="m-0 color-subtle">
+        {{ course.slides?.[slideIndex]?.stepTwo?.pageTitle }}
+      </h5>
+    </div>
+    <div class="course-page-header-actions">
+      <button
+        (click)="editSlide()"
+        nz-button
+        nzType="primary"
+        [hidden]="course?.status == 'completed'"
+      >
+        EDIT
+      </button>
+      <button
+        (click)="deleteCourse()"
+        title="Delete this course"
+        nz-button
+        nzType="primary"
+        [hidden]="course?.status == 'completed'"
+      >
+        DELETE
+      </button>
+
+      <span nz-typography>
+        PAGE {{ slideIndex + 1 }}
+        <mark>/ {{ course?.slides?.length }}</mark>
+      </span>
+      <button
+        (click)="handleExit()"
+        [hidden]="previewMode"
+        nz-button
+        nzType="primary"
+      >
+        EXIT
+      </button>
+    </div>
+  </div>
+  <app-congratulation *ngIf="!validateCongrat()"></app-congratulation>
+  <div class="course-page-content" *ngIf="slideViewValidation()">
+    <div class="row">
+      <div *ngIf="imageCount0()" class="col-12">
+        <div class="card imgOneOrTwo">
+          <div class="card-body">
+            <div
+              [innerHTML]="course.slides[slideIndex]?.stepTwo?.editor"
+              class="maxHeightFull"
+            ></div>
+          </div>
+        </div>
+      </div>
+      <div
+        *ngIf="imageCount2Or1()"
+        [ngClass]="{
+          'col-md-6 col-lg-6 col-sm-12 mb-3':
+            imagesCount == 1 || imagesCount == 2
+        }"
+      >
+        <div class="card imgOneOrTwo">
+          <div class="card-body">
+            <div
+              [innerHTML]="course.slides[slideIndex]?.stepTwo?.editor"
+              class="maxHeightFull"
+            ></div>
+          </div>
+        </div>
+      </div>
+      <div
+        *ngIf="imageCountGreaterThan2()"
+        [ngClass]="{
+          'col-12 mb-2': imagesCount == 0 || imagesCount > 2,
+          'col-md-6 col-lg-6 col-sm-12 mb-3':
+            imagesCount == 1 || imagesCount == 2
+        }"
+      >
+        <div class="card imgMorethanOne">
+          <div class="card-body">
+            <div
+              [innerHTML]="course.slides[slideIndex]?.stepTwo?.editor"
+              class="maxHeightFull"
+            ></div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="imageCount1()" class="col-md-6 col-lg-6 col-sm-12 mb-2">
+        <div *ngIf="slideViewValidation2()">
+          <div
+            *ngFor="
+              let image of course.slides[slideIndex]?.stepTwo?.images;
+              let i = index
+            "
+          >
+            <div class="card imgOne">
+              <div
+                class="card-body d-flex justify-content-center align-items-center"
+              >
+                <img
+                  [src]="image"
+                  class="layerTwoContent"
+                  alt="Slide Image"
+                  (click)="showLayerTwoContent(i)"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="imageCount2()" class="col-md-6 col-lg-6 col-sm-12">
+        <div *ngIf="slideViewValidation2()">
+          <div
+            *ngFor="
+              let image of course.slides[slideIndex]?.stepTwo?.images;
+              let i = index
+            "
+            class="row"
+          >
+            <div class="col-md-12 pb-3">
+              <div class="card imageTwoContent">
+                <div
+                  class="card-body d-flex justify-content-center align-items-center"
+                >
+                  <img
+                    [src]="image"
+                    alt="Slide Image"
+                    class="imgCount2layer"
+                    (click)="showLayerTwoContent(i)"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="imageCountGreaterThan2()" class="col-md-12">
+        <div *ngIf="slideViewValidation2()" class="row customPaddingTop4">
+          <div
+            *ngFor="
+              let image of course.slides[slideIndex]?.stepTwo?.images;
+              let i = index
+            "
+            class="col-md-4"
+          >
+            <div class="card imageTwoContent">
+              <div
+                class="card-body d-flex justify-content-center align-items-center"
+              >
+                <img
+                  _ngcontent-ng-c4176600946=""
+                  [src]="image"
+                  alt="Slide Image"
+                  (click)="showLayerTwoContent(i)"
+                  class="imgCount2layer"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="next-button" *ngIf="validateCongrat()">
+    <div class="button-container">
+      <button
+        (click)="goToPreviousSlide()"
+        nz-button
+        nzType="primary"
+        nzSize="large"
+        [hidden]="slideIndex === 0"
+      >
+        PREVIOUS
+      </button>
+      <span class="color-red" [hidden]="isCurrentSlideFullyViewed()"
+        >Complete all actions to enable the NEXT button</span
+      >
+      <button
+        nz-button
+        nzType="primary"
+        nzSize="large"
+        (click)="handleNavigation()"
+        [disabled]="
+          !isCurrentSlideFullyViewed() ||
+          (slideIndex + 1 == course?.slides?.length && previewMode)
+        "
+      >
+        NEXT
+      </button>
+    </div>
+  </div>
+  <div class="next-button" *ngIf="!validateCongrat()">
+    <div class="button-container">
+      <button nz-button nzType="primary">OK</button>
+    </div>
+  </div>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+    crossorigin="anonymous"
+  />
+</div>

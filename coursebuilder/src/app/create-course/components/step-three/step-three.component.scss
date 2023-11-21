@@ -1,0 +1,29 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .quill-editor {
+    width: 100%;
+  }
+
+  .card-display {
+    width: 100%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px auto 40px auto;
+  }
+
+  nz-collapse {
+    width: 100%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 20px;
+    margin: 0px auto 0px auto;
+  }
+}
+
+.layer2Image {
+  max-width: 289px;
+}

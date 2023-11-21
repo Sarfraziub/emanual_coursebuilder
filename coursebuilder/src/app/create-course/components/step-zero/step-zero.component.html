@@ -1,0 +1,78 @@
+<div class="headings">
+  <h1 nz-typography>CREATE/EDIT A COURSE</h1>
+</div>
+<div class="buttons-wrapper" nz-row [nzGutter]="[24, 24]">
+  <div
+    nz-col
+    class="gutter-row"
+    [nzXs]="24 / 1"
+    [nzSm]="24 / 1"
+    [nzMd]="24 / 2"
+    [nzLg]="24 / 3"
+  >
+    <button
+      class="card-button"
+      nz-button
+      nzType="primary"
+      (click)="handleAddPage()"
+    >
+      Add a new page
+      <span nz-icon nzType="redo" nzTheme="outline"></span>
+    </button>
+  </div>
+  <div
+    nz-col
+    class="gutter-row"
+    [nzXs]="24 / 1"
+    [nzSm]="24 / 1"
+    [nzMd]="24 / 2"
+    [nzLg]="24 / 3"
+  >
+    <button
+      class="card-button"
+      nz-button
+      nzType="primary"
+      (click)="handlePreview()"
+      [disabled]="!flgPreview"
+    >
+      Preview
+      <span nz-icon nzType="redo" nzTheme="outline"></span>
+    </button>
+  </div>
+  <div
+    nz-col
+    class="gutter-row"
+    [nzXs]="24 / 1"
+    [nzSm]="24 / 1"
+    [nzMd]="24 / 2"
+    [nzLg]="24 / 3"
+  >
+    <button
+      class="card-button"
+      nz-button
+      nzType="primary"
+      (click)="handleFinish()"
+    >
+      Finish
+      <span nz-icon nzType="arrow-right" nzTheme="outline"></span>
+    </button>
+  </div>
+  <div
+    nz-col
+    class="gutter-row"
+    [nzXs]="24 / 1"
+    [nzSm]="24 / 1"
+    [nzMd]="24 / 2"
+    [nzLg]="24 / 3"
+  >
+    <button
+      class="card-button"
+      nz-button
+      nzType="primary"
+      (click)="handleExit()"
+    >
+      Save & Exit
+      <span nz-icon nzType="arrow-right" nzTheme="outline"></span>
+    </button>
+  </div>
+</div>

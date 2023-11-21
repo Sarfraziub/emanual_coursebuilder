@@ -1,0 +1,106 @@
+<div class="headings" *ngIf="notMode()">
+  <h1 nz-typography>Course Builder</h1>
+</div>
+
+<div class="steps-header" *ngIf="validateUpdateOrCreate()">
+  <button
+    nz-button
+    nzType="default"
+    class="saveExitBtn"
+    nzSize="large"
+    (click)="handleSaveAndExit()"
+  >
+    SAVE & EXIT
+    <span nz-icon nzType="arrow-right" nzTheme="outline"></span>
+  </button>
+</div>
+<div class="categories-wrapper" nz-row [nzGutter]="[24, 24]" *ngIf="notMode()">
+  <div
+    nz-col
+    class="gutter-row column"
+    [nzXs]="24 / 1"
+    [nzSm]="24 / 1"
+    [nzMd]="24 / 2"
+    [nzLg]="24 / 3"
+  >
+    <button
+      nz-button
+      class="card-button"
+      (click)="handleCreateNewCourse()"
+      nzType="primary"
+      nzSize="large"
+    >
+      Create a new course
+    </button>
+  </div>
+  <div
+    nz-col
+    class="gutter-row column"
+    [nzXs]="24 / 1"
+    [nzSm]="24 / 1"
+    [nzMd]="24 / 2"
+    [nzLg]="24 / 3"
+  >
+    <a
+      [routerLink]="['/view-courses']"
+      class="card-button"
+      nz-button
+      nzType="primary"
+      nzSize="large"
+    >
+      View courses
+    </a>
+  </div>
+</div>
+<div class="headings" *ngIf="validateUpdateOrCreate()">
+  <h1 nz-typography>
+    Enter the event/course name (e.g. Asbestos Awareness, etc.)
+  </h1>
+  <p nz-typography><span nz-typography>*mandatory</span></p>
+</div>
+<nz-input-group
+  class="event-name-field"
+  *ngIf="validateUpdateOrCreate()"
+  nzSize="large"
+  nzSearch
+>
+  <input
+    type="text"
+    nz-input
+    placeholder="Please Enter Event Name"
+    [(ngModel)]="eventName"
+  />
+</nz-input-group>
+<div class="steps-footer">
+  <button
+    nz-button
+    nzType="default"
+    nzSize="large"
+    (click)="goBackToHome()"
+    *ngIf="notMode()"
+  >
+    <span nz-icon nzType="arrow-left" nzTheme="outline"></span>
+    BACK
+  </button>
+  <button
+    nz-button
+    nzType="default"
+    nzSize="large"
+    (click)="goBack()"
+    *ngIf="validateUpdateOrCreate()"
+  >
+    <span nz-icon nzType="arrow-left" nzTheme="outline"></span>
+    BACK
+  </button>
+
+  <button
+    nz-button
+    nzType="default"
+    nzSize="large"
+    *ngIf="validateUpdateOrCreate()"
+    (click)="handleNavigation()"
+  >
+    NEXT
+    <span nz-icon nzType="arrow-right" nzTheme="outline"></span>
+  </button>
+</div>

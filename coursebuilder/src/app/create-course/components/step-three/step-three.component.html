@@ -1,0 +1,67 @@
+<div class="headings">
+  <h1 nz-typography>
+    Part 2 of 2 - Add the Layer 2 Text and Image
+    <span class="font-size-20" nz-typography
+      >- Paste the text into the box below and use the tools to format it</span
+    >
+    <span class="italic" nz-typography>*mandatory</span>
+  </h1>
+</div>
+
+<nz-collapse>
+  <nz-collapse-panel
+    *ngFor="let panel of panels; let i = index"
+    [nzHeader]="panel.name"
+    [nzActive]="panel.active"
+    [nzDisabled]="panel.disabled"
+  >
+    <form
+      *ngIf="getFormGroupAtIndex(i)"
+      nz-form
+      [nzLayout]="'vertical'"
+      [formGroup]="getFormGroupAtIndex(i)"
+    >
+      <nz-form-item>
+        <nz-form-label>Set Layer 2 options for this image </nz-form-label>
+        <nz-form-control>
+          <img [src]="panel.imageUrl" class="layer2Image" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired nzFor="layer2Options"
+          >Layer 2 Options</nz-form-label
+        >
+        <nz-form-control nzErrorTip="Please select layer options!">
+          <nz-select
+            id="layerOptions"
+            formControlName="layer2Options"
+            nzPlaceHolder="Select an option"
+          >
+            <nz-option
+              *ngFor="let option of layerTwoOptions"
+              [nzValue]="option.value"
+              [nzLabel]="option.label"
+            ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired nzFor="pageTitle">Page Title</nz-form-label>
+        <nz-form-control nzErrorTip="Please enter page title!">
+          <input nz-input formControlName="pageTitle" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label>
+          <span class="color-red">*&nbsp; </span>Editor</nz-form-label
+        >
+        <nz-form-control nzErrorTip="Please enter edit text!">
+          <quill-editor
+            class="quill-editor"
+            formControlName="editor"
+          ></quill-editor>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </nz-collapse-panel>
+</nz-collapse>

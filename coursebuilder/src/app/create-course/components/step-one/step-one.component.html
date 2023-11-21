@@ -1,0 +1,66 @@
+<div class="headings">
+  <h1 nz-typography>
+    Select the Page Type you want to add from the dropdown below
+  </h1>
+</div>
+
+<form
+  nz-form
+  [nzLayout]="'vertical'"
+  [formGroup]="validateForm"
+  (ngSubmit)="submitForm()"
+>
+  <nz-form-item>
+    <nz-form-label nzRequired nzFor="pageTypeOptions">Page Type</nz-form-label>
+    <nz-form-control nzErrorTip="Please select your layer!">
+      <nz-select
+        id="pageTypeOptions"
+        formControlName="layer"
+        nzPlaceHolder="Select an option"
+        (ngModelChange)="onLayerSelect($event)"
+      >
+        <nz-option
+          *ngFor="let option of pageTypeOptions"
+          [nzValue]="option.value"
+          [nzLabel]="option.label"
+        ></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label nzRequired nzFor="layerOptions">Layer Options</nz-form-label>
+    <nz-form-control nzErrorTip="Please select layer options!">
+      <nz-select
+        id="layerOptions"
+        formControlName="layerOptions"
+        nzPlaceHolder="Select an option"
+      >
+        <nz-option
+          *ngFor="let option of currentLayerOptions"
+          [nzValue]="option.value"
+          [nzLabel]="option.label"
+        ></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label nzRequired nzFor="enabledNext"
+      >Page Completion Rule(when Next button can be enabled on
+      Viewer)</nz-form-label
+    >
+    <nz-form-control nzErrorTip="Please select your layer!">
+      <nz-select
+        id="enabledNext"
+        formControlName="enabledNext"
+        nzPlaceHolder="Select an option"
+      >
+        <nz-option
+          *ngFor="let option of completionRuleOptions"
+          [nzValue]="option.value"
+          [nzLabel]="option.label"
+        ></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item> </nz-form-item>
+</form>

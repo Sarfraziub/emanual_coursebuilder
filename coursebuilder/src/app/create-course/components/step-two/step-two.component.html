@@ -1,0 +1,107 @@
+<div class="headings">
+  <h1 nz-typography>
+    Enter the Layer 1 page title (e.g. Introduction)
+    <span class="italic" nz-typography>*mandatory</span>
+  </h1>
+</div>
+
+<form
+  nz-form
+  [nzLayout]="'vertical'"
+  [formGroup]="validateForm"
+  (ngSubmit)="submitForm()"
+>
+  <div class="card-display">
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="pageTitle">Page Title</nz-form-label>
+      <nz-form-control nzErrorTip="Please add layer one title!">
+        <input nz-input formControlName="pageTitle" id="pageTitle" />
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+  <div class="headings">
+    <h1 nz-typography>
+      Part 1 of {{ totalParts }} - Add the Layer 1 Text
+      <span class="font-size-20" nz-typography
+        >- Paste the text into the box below and use the tools to format
+        it</span
+      >
+      <span class="italic" nz-typography>*mandatory</span>
+    </h1>
+  </div>
+  <div class="card-display">
+    <div class="buttons-wrapper" nz-row [nzGutter]="[24, 24]">
+      <div
+        nz-col
+        class="gutter-row"
+        [nzXs]="24 / 1"
+        [nzSm]="24 / 1"
+        [nzMd]="
+          selectedOption?.value === 'L1-OP-2' ||
+          selectedOption?.value === 'L1-L2-OP-1'
+            ? 24 / 2
+            : 24 / 1
+        "
+        [nzLg]="
+          selectedOption?.value === 'L1-OP-2' ||
+          selectedOption?.value === 'L1-L2-OP-1'
+            ? 24 / 2
+            : 24 / 1
+        "
+      >
+        <nz-form-item>
+          <nz-form-label>Enter Text</nz-form-label>
+          <nz-form-control>
+            <quill-editor
+              class="quill-editor"
+              formControlName="editor"
+            ></quill-editor>
+            <div *ngIf="validateText()" class="ant-form-explain color-red">
+              Text is required.
+            </div>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div
+        nz-col
+        class="gutter-row"
+        [nzXs]="24 / 1"
+        [nzSm]="24 / 1"
+        [nzMd]="24 / 2"
+        [nzLg]="24 / 2"
+      >
+        <div *ngIf="uploadImageDiv()">
+          <nz-form-item>
+            <nz-form-label>
+              <span class="color-red">*&nbsp; </span> Upload Images
+            </nz-form-label>
+            <nz-form-control>
+              <nz-upload
+                nzAccept=".png, .jpg, .jpeg, .gif"
+                [nzRemove]="handleImageRemove"
+                [nzShowUploadList]="{ showRemoveIcon: true }"
+                [nzBeforeUpload]="beforeUpload"
+                nzListType="picture-card"
+                [(nzFileList)]="fileList"
+                nzType="drag"
+                [nzMultiple]="true"
+                required
+              >
+                <button nz-button>
+                  <span nz-icon nzType="upload"></span>
+                  Select File
+                </button>
+              </nz-upload>
+              <div
+                *ngIf="displayUploadValidation()"
+                class="ant-form-explain color-red"
+              >
+                Image is required.
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

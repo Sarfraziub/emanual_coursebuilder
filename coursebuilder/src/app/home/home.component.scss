@@ -1,0 +1,28 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex: 1;
+  gap: 20px;
+  padding: 30px;
+
+  .choices-wrapper {
+    display: flex;
+    gap: 10px;
+  }
+
+  .steps-footer {
+    margin-top: auto;
+    align-self: flex-end;
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+  }
+
+  .steps-header {
+    margin-left: auto;
+  }
+}

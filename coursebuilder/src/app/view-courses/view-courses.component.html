@@ -1,0 +1,88 @@
+<section class="courses-listing-page">
+  <h1 nz-typography>Courses</h1>
+  <div class="table-container">
+    <nz-table #coursesTable [nzData]="courses">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Title</th>
+          <th>Status</th>
+          <th>Version</th>
+          <th>No. of Pages</th>
+          <th>Last page completed</th>
+          <th>Completion percentage</th>
+          <th>Path</th>
+          <th>Created By</th>
+          <th>Created At</th>
+          <th>Updated By</th>
+          <th>Updated At</th>
+          <th>Action(s)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of coursesTable.data">
+          <td>{{ data.id }}</td>
+          <td>{{ data.title }}</td>
+          <td>{{ data.status }}</td>
+          <td>{{ data.version }}</td>
+          <td>{{ data?.slides?.length }}</td>
+          <td>{{ data.lastPageCompleted }}</td>
+          <td>{{ data.completionPercentage ?? 0 }}</td>
+          <td>{{ data.path }}</td>
+          <td>{{ data.createdBy }}</td>
+          <td>{{ data.createdAt | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
+          <td>{{ data.lastUpdatedBy }}</td>
+          <td>{{ data.lastUpdatedAt | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
+          <td>
+            <a
+              [routerLink]="['/view-courses', data.id]"
+              class="courseButton"
+              nz-button
+              nzType="primary"
+              title="View this course"
+              *ngIf="slideLength(data)"
+            >
+              <span nz-icon nzType="eye" nzTheme="outline"></span>
+            </a>
+            <a
+              (click)="editCourse(data.id)"
+              class="courseButton"
+              title="Edit this course"
+              nz-button
+              nzType="primary"
+              *ngIf="checkCompletedStatus(data)"
+            >
+              <span nz-icon nzType="edit" nzTheme="outline"></span>
+            </a>
+            <a
+              (click)="duplicateCourse(data.id)"
+              class="courseButton"
+              title="Duplicate this course"
+              nz-button
+              nzType="primary"
+              *ngIf="checkForDuplicte(data)"
+            >
+              <span nz-icon nzType="copy" nzTheme="outline"></span>
+            </a>
+            <a
+              (click)="deleteCourse(data.id)"
+              title="Delete this course"
+              class="deleteButton"
+              nz-button
+              nzType="primary"
+              *ngIf="checkCompletedStatus(data)"
+            >
+              <span nz-icon nzType="delete" nzTheme="outline"></span>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+</section>
+<section class="steps-footer">
+  <a [routerLink]="['/']" nz-button nzType="default" nzSize="large">
+    <span nz-icon nzType="arrow-left" nzTheme="outline"></span>
+    BACK
+  </a>
+</section>
