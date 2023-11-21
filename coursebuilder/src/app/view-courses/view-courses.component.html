@@ -36,7 +36,7 @@
           <td>
             <a
               [routerLink]="['/view-courses', data.id]"
-              class="courseButton"
+              class="courseButtonIcon"
               nz-button
               nzType="primary"
               title="View this course"
@@ -46,7 +46,7 @@
             </a>
             <a
               (click)="editCourse(data.id)"
-              class="courseButton"
+              class="courseButtonIcon"
               title="Edit this course"
               nz-button
               nzType="primary"
@@ -56,7 +56,7 @@
             </a>
             <a
               (click)="duplicateCourse(data.id)"
-              class="courseButton"
+              class="courseButtonIcon"
               title="Duplicate this course"
               nz-button
               nzType="primary"
@@ -67,7 +67,7 @@
             <a
               (click)="deleteCourse(data.id)"
               title="Delete this course"
-              class="deleteButton"
+              class="courseButtonIcon"
               nz-button
               nzType="primary"
               *ngIf="checkCompletedStatus(data)"
@@ -81,7 +81,13 @@
   </div>
 </section>
 <section class="steps-footer">
-  <a [routerLink]="['/']" nz-button nzType="default" nzSize="large">
+  <a
+    [routerLink]="['/']"
+    nz-button
+    nzType="default"
+    nzSize="large"
+    class="backButton"
+  >
     <span nz-icon nzType="arrow-left" nzTheme="outline"></span>
     BACK
   </a>

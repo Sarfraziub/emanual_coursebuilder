@@ -42,6 +42,20 @@ export class CourseService {
   deleteFromLocalStorage(key: string) {
     LocalStorageUtils.deleteFromLocalStorage(key);
   }
+  getStyle() {
+    return {
+      bgColorIcon: 'pink',
+      bgColorDelBtn: 'red',
+      bgColorEditBtn: 'yellow',
+      bgColorNextBtn: 'dark grey',
+      bgColorPrevBtn: 'dark red',
+      bgColorPreviewBtn: 'dark grey',
+      bgColorSaveBtn: 'green',
+      bgColorFinishBtn: 'light green',
+      bgColorExitBtn: 'light black',
+      borderColor: 'solid black 2px;',
+    };
+  }
   retrieveFromLocalStorage(key: string) {
     try {
       return LocalStorageUtils.retrieveFromLocalStorage(key);

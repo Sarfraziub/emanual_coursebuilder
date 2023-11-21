@@ -27,6 +27,7 @@ export class ViewCourseComponent implements OnInit {
   stepParam: number = 0;
   flgCongratulation: boolean = false;
   courses: any[] = [];
+  styleObject: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -39,10 +40,41 @@ export class ViewCourseComponent implements OnInit {
   ngOnInit(): void {
     this.courseService.deleteCourseBuilderSteps();
     this.getSelectedCourseInfo();
-
     this.initLayerViewStatus();
+    this.setStyle();
   }
+  setStyle() {
+    this.styleObject = this.courseService.getStyle();
+    document.documentElement.style.setProperty(
+      '--bgColorNextBtn',
+      this.styleObject.bgColorNextBtn,
+    );
+    document.documentElement.style.setProperty(
+      '--bgColorExitBtn',
+      this.styleObject.bgColorExitBtn,
+    );
+    document.documentElement.style.setProperty(
+      '--bgColorIcon',
+      this.styleObject.bgColorIcon,
+    );
+    document.documentElement.style.setProperty(
+      '--bgColorDelBtn',
+      this.styleObject.bgColorDelBtn,
+    );
+    document.documentElement.style.setProperty(
+      '--bgColorPreviewBtn',
+      this.styleObject.bgColorPreviewBtn,
+    );
+    document.documentElement.style.setProperty(
+      '--bgColorEditBtn',
+      this.styleObject.bgColorEditBtn,
+    );
 
+    document.documentElement.style.setProperty(
+      '--borderColor',
+      this.styleObject.borderColor,
+    );
+  }
   editSlide(): void {
     // /edit-courses/Arsam?step=2&slide=1
     this.router.navigate([`/edit-courses/${this.courseId}`], {

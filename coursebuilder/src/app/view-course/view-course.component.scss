@@ -171,3 +171,23 @@
 .customPaddingTop4 {
   padding-top: 4px;
 }
+.editBtn {
+  background-color: var(--bgColorEditBtn);
+  border-color: var(--borderColor);
+}
+.deleteBtn {
+  background-color: var(--bgColorDelBtn);
+  border-color: var(--borderColor);
+}
+.exitBtn {
+  background-color: var(--bgColorExitBtn);
+  border-color: var(--borderColor);
+}
+.previousBtn {
+  background-color: var(--bgColorPreviewBtn);
+  border-color: var(--borderColor);
+}
+.nextBtn {
+  background-color: var(--bgColorNextBtn);
+  border-color: var(--borderColor);
+}

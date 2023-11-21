@@ -13,6 +13,7 @@ import { COURSE_CONST, STORAGE_KEY } from '../create-course/data';
 })
 export class ViewCoursesComponent implements OnInit {
   courses: any[] = [];
+  styleObject: any;
   constructor(
     private router: Router,
     private cdr: ChangeDetectorRef,
@@ -22,6 +23,18 @@ export class ViewCoursesComponent implements OnInit {
   ngOnInit(): void {
     this.courseService.deleteCourseBuilderSteps();
     this.courses = this.courseService.getCoursesFromLocalStorage() || [];
+    this.setStyle();
+  }
+  setStyle() {
+    this.styleObject = this.courseService.getStyle();
+    document.documentElement.style.setProperty(
+      '--bgColorPrevBtn',
+      this.styleObject.bgColorPrevBtn,
+    );
+    document.documentElement.style.setProperty(
+      '--bgColorIcon',
+      this.styleObject.bgColorIcon,
+    );
   }
 
   editCourse(id: any) {

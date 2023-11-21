@@ -12,6 +12,7 @@
         nz-button
         nzType="primary"
         [hidden]="course?.status == 'completed'"
+        class="editBtn"
       >
         EDIT
       </button>
@@ -21,6 +22,7 @@
         nz-button
         nzType="primary"
         [hidden]="course?.status == 'completed'"
+        class="deleteBtn"
       >
         DELETE
       </button>
@@ -34,6 +36,7 @@
         [hidden]="previewMode"
         nz-button
         nzType="primary"
+        class="exitBtn"
       >
         EXIT
       </button>

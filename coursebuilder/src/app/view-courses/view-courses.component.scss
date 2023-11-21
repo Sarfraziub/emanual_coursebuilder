@@ -18,6 +18,11 @@
   /* Align button to the right */
 }
 
-.courseButton {
+.courseButtonIcon {
   margin: 5px;
+  background-color: var(--bgColorIcon);
+}
+
+.backButton {
+  background-color: var(--bgColorPrevBtn);
 }
